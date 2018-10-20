@@ -17,6 +17,7 @@ class App extends Component {
     }
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
 
   addTrack(track){
@@ -36,6 +37,10 @@ class App extends Component {
       this.setState({playlistTracks: array})
   }
 
+  updatePlaylistName(name){
+    this.setState({playlistName: name});
+  }
+
 
   render() {
     return (
@@ -45,7 +50,8 @@ class App extends Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResult} onAdd={this.addTrack} />
-            <PlayList playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} />
+            <PlayList playlistName={this.state.playlistName} onNameChange={updatePlaylistName}
+            playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} />
           </div>
         </div>
       </div>
